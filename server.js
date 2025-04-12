@@ -28,6 +28,7 @@ app.post("/api/mini/service/provider", (req, res) => {
   const { TimeStamp, Nonce, Encrypt, MsgSignature } = data || {};
 
   console.log("接收到的数据:", data);
+
   try {
     const isPass = verifyByteDanceServer(
       tpToken,
@@ -42,17 +43,12 @@ app.post("/api/mini/service/provider", (req, res) => {
       console.log('"解密后的消息:", res);', res);
     }
 
-    res.status(200).json({
-      success: true,
-      message: "验证成功",
-    });
+    // 直接返回字符串 success，而不是 JSON
+    res.send("success");
   } catch (error) {
     console.error("验证失败:", error);
-    res.status(400).json({
-      success: false,
-      message: "验证失败",
-      error: error.message,
-    });
+    // 即使验证失败也返回 success，避免字节跳动服务器重试
+    res.send("success");
   }
 });
 
