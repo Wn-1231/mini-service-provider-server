@@ -9,7 +9,7 @@ const tpToken = "HAvtfDZkDFhozBrlo5tsbmt11Oj2z3BG"; // 生成的 Token
 
 // 创建 Express 应用实例
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 // 配置中间件
 app.use(bodyParser.json()); // 用于解析 JSON 请求体
@@ -68,6 +68,11 @@ app.use((err, req, res, next) => {
 });
 
 // 启动服务器
-app.listen(PORT, () => {
-  console.log(`服务器运行在 http://localhost:${PORT}`);
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`服务器运行在 http://0.0.0.0:${PORT}`);
 });
+
+// app.listen(PORT, () => {
+//   console.log(`服务器运行在 http://localhost:${PORT}`);
+// });
