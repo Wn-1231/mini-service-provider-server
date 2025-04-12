@@ -22,9 +22,9 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-app.get("/api/mini/service/provider", (req, res) => {
-  res.send("success");
-});
+// app.get("/api/mini/service/provider", (req, res) => {
+//   res.send("success");
+// });
 
 // POST 请求示例
 app.post("/api/mini/service/provider", (req, res) => {
